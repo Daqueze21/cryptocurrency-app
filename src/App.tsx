@@ -29,7 +29,7 @@ const App = () => {
 						<Route exact path="/cryptocurrencies">
 							<Cryptocurrencies />
 						</Route>
-						<Route exact path="/">
+						<Route exact path="/crypto/:coinId">
 							<CryptoInfo />
 						</Route>
 					</Switch>
