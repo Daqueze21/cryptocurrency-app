@@ -1,7 +1,6 @@
 // import axios, { AxiosError } from 'axios';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-import { ICoins } from '../models/ICoin';
+// import { ICoins } from '../models/ICoin';
 
 const cryptoApiHeaders = {
 	'x-rapidapi-host': process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,

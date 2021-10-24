@@ -11,7 +11,7 @@ import styles from './App.module.scss';
 const { Footer, Content } = Layout;
 const App = () => {
 	return (
-		<Layout>
+		<Layout style={{ minHeight: '100vh' }}>
 			<Navbar />
 
 			<Layout>
@@ -27,7 +27,7 @@ const App = () => {
 							<Exchanges />
 						</Route>
 						<Route exact path="/cryptocurrencies">
-							<Cryptocurrencies />
+							<Cryptocurrencies simplified={false} />
 						</Route>
 						<Route exact path="/crypto/:coinId">
 							<CryptoInfo />

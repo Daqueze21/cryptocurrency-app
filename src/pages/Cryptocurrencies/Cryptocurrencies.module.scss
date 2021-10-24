@@ -1,0 +1,11 @@
+.search_crypto{
+  margin: 20px auto 30px auto;
+  width: 250px;
+}
+
+.Cryptocurrencies_wrapper{
+  min-height: 65vh;
+  .crypto_card {
+    min-width: 250px;
+  }
+}

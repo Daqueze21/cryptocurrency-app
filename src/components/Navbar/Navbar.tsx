@@ -21,8 +21,8 @@ const Navbar = () => {
 				</Title>
 			</div>
 
-			<Menu theme="dark">
-				<Item key="1" icon={<HomeOutlined />}>
+			<Menu theme="dark" defaultSelectedKeys={['/']}>
+				<Item key="/" icon={<HomeOutlined />}>
 					<Link to="/">Home</Link>
 				</Item>
 				<Item key="2" icon={<GlobalOutlined />}>

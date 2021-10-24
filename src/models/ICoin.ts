@@ -1,16 +1,16 @@
-export type ICoin = {
+export interface ICoin {
 	id: number;
 	name: string;
 	description: string;
 	iconUrl: string;
-	marketCap: string;
-	volume: string;
-	price: string;
-	totalSupply: string;
+	marketCap: number;
+	price: number;
+	totalSupply: number;
 	change: number;
-};
+	rank: number;
+}
 
-export type IGlobalStats = {
+export interface IGlobalStats {
 	total: number;
 	totalMarkets: number;
 	totalExchanges: number;
@@ -20,12 +20,12 @@ export type IGlobalStats = {
 	limit: number;
 	order: string;
 	base: string;
-};
+}
 
-export type ICoinsData = {
+export interface ICoinsData {
 	stats: IGlobalStats;
 	coins: ICoin[];
-};
+}
 
 export interface ICoins {
 	status: string;

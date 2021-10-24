@@ -1,7 +1,78 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
-export const Cryptocurrencies = () => {
-	return <div style={{ padding: 24, minHeight: 360 }}>Cryptocurrencies</div>;
+import { useGetCryptosQuery } from '../../services/cryptoApi';
+import { Link } from 'react-router-dom';
+
+import { Row, Col, Input, Spin, Alert } from 'antd';
+
+import { ICoin } from '../../models/ICoin';
+import styles from './Cryptocurrencies.module.scss';
+import CryptoCard from '../../components/CryptoCard/CryptoCard';
+
+interface CryptocurrenciesProps {
+	simplified: boolean;
+}
+
+export const Cryptocurrencies: FC<CryptocurrenciesProps> = ({ simplified }) => {
+	const count = simplified ? '10' : '80';
+	const { data, error, isLoading } = useGetCryptosQuery(count);
+	const [cryptosList, setCryptos] = useState<ICoin[]>([]);
+	const [searchCrypto, setSearchCrypto] = useState('');
+	// if (isLoading) return ;
+	// if (error) return ;
+	// console.log(data);
+
+	// const { total, total24hVolume, totalExchanges, totalMarketCap, totalMarkets } = data?.data?.stats;
+
+	useEffect(() => {
+		setCryptos(data?.data?.coins);
+
+		const filteredData = data?.data?.coins.filter((crypto: ICoin) =>
+			crypto.name.toLowerCase().includes(searchCrypto)
+		);
+		setCryptos(filteredData);
+	}, [data, searchCrypto]);
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchCrypto(e.target.value.toLowerCase());
+	};
+
+	return (
+		<>
+			{!simplified && (
+				<div className={styles.search_crypto}>
+					<Input placeholder="Search Cryptocurrency" onChange={handleChange} />
+				</div>
+			)}
+			{isLoading ? (
+				<>
+					<Row style={{ minHeight: '100vh' }} justify="center" align="middle">
+						<Spin tip="Loading..."></Spin>
+					</Row>
+				</>
+			) : error ? (
+				<>
+					<Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
+						<Alert
+							message="something wrong with network"
+							description="Further details about the context of this alert."
+							type="info"
+						/>
+					</Row>
+				</>
+			) : (
+				<Row gutter={[32, 32]} className={styles.Cryptocurrencies_wrapper}>
+					{cryptosList?.map((crypto: ICoin) => (
+						<Col xs={24} sm={12} lg={6} key={crypto.id}>
+							<Link key={crypto.id} to={`/crypto/${crypto.id}`}>
+								<CryptoCard crypto={crypto} />
+							</Link>
+						</Col>
+					))}
+				</Row>
+			)}
+		</>
+	);
 };
 
 export default Cryptocurrencies;
