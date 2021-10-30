@@ -17,7 +17,7 @@ const CryptoCard: FC<CryptoCardProps> = ({ crypto }) => {
 			extra={<img className={styles.crypto_img} src={iconUrl} />}
 			hoverable
 		>
-			<p>Price: {millify(price)}</p>
+			<p>Price: {millify(+price)}</p>
 			<p>Market Cap: {millify(marketCap)}</p>
 			<p>Daily Change: {change}%</p>
 		</Card>

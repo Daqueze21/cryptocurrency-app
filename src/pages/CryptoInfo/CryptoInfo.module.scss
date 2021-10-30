@@ -1,0 +1,162 @@
+@import '../../App.module.scss';
+// import "./scss/helpers.scss"
+
+.cryptoInfo_wrapper{
+    margin: 30px;
+
+    .cryptoInfo_header_wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        gap: 10px;
+
+        
+        .crypto_name{
+            font-weight: 700;
+        }
+
+        & p{
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .cryptoInfo_header_img{
+            margin-left: 5px;
+            img{
+                height: 80px;
+            }
+        }
+    }
+
+    .cryptoInfo_stats_wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+
+        h2{
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            color: var(--text-blue);
+        }
+        
+        .crypto_statistics {
+            & p{
+                font-size: 1rem;
+                opacity: 0.9;
+            }
+
+            .crypto_statistics_header{
+                font-weight: 700 !important;
+                margin-top: 20px !important;
+                color: var(--pink) !important;
+            }
+
+            .crypto_stats{
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid var(--border);
+                font-size: 1rem;
+                opacity: 0.9;
+                padding: 20px;
+
+                &:hover{
+                    background-color: var(--bgSecondary);
+                }
+
+                .crypto_stats_name{
+                    display: flex;
+                    gap: 10px;
+                    font-size: 1rem;
+                }
+
+                .crypto_stats_value{
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+
+    .crypto_desc_link{
+        display: flex;
+        gap: 40px;
+        margin-top: 40px;
+        padding-top: 20px;
+        
+        .crypto_desc{
+            flex: 0.5;
+        }
+
+        .crypto_links {
+            flex: 0.5;
+
+            .crypto_link {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--border);
+                padding: 20px;
+
+                .link_name{
+                    text-transform: capitalize;
+                    font-size: 1rem;
+                }
+
+                a{
+                    color: var(--text-blue);
+                    font-weight: 700;
+                    font-size: 1rem;
+                }
+
+                &:hover{
+                    background-color: var(--bgSecondary);
+                }
+            }
+        }
+
+        & a{
+            color: var(--text-blue);
+        }
+        & h3{
+            font-weight: 700;
+            // color: var(--text-blue);
+        }
+
+        & p{
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        
+
+        & h3{
+            font-weight: 700;
+        }
+    }
+}
+
+@media screen and (max-width:1000px){
+    .cryptoInfo_stats_wrapper{
+        flex-direction: column;
+
+        & h2{
+            margin-top: 0px;
+        }
+    }
+    
+    .crypto_desc_link{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .cryptoInfo_wrapper{
+        margin: 0;
+
+    }
+}

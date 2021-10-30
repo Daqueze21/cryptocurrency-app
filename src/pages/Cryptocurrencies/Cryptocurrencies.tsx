@@ -16,21 +16,18 @@ interface CryptocurrenciesProps {
 export const Cryptocurrencies: FC<CryptocurrenciesProps> = ({ simplified }) => {
 	const count = simplified ? '10' : '80';
 	const { data, error, isLoading } = useGetCryptosQuery(count);
-	const [cryptosList, setCryptos] = useState<ICoin[]>([]);
+	const [cryptosList, setCryptosList] = useState<ICoin[] | undefined>([]);
 	const [searchCrypto, setSearchCrypto] = useState('');
-	// if (isLoading) return ;
-	// if (error) return ;
-	// console.log(data);
 
 	// const { total, total24hVolume, totalExchanges, totalMarketCap, totalMarkets } = data?.data?.stats;
 
 	useEffect(() => {
-		setCryptos(data?.data?.coins);
+		setCryptosList(data?.data?.coins);
 
 		const filteredData = data?.data?.coins.filter((crypto: ICoin) =>
 			crypto.name.toLowerCase().includes(searchCrypto)
 		);
-		setCryptos(filteredData);
+		setCryptosList(filteredData);
 	}, [data, searchCrypto]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

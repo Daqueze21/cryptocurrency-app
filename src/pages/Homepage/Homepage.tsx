@@ -14,6 +14,7 @@ export const Homepage = () => {
 		return (
 			<>
 				<Title level={2}>Global Crypto Stats</Title>
+				<Divider />
 				<Row justify="center" align="middle">
 					<Spin tip="Loading..."></Spin>
 				</Row>
@@ -24,6 +25,7 @@ export const Homepage = () => {
 		return (
 			<>
 				<Title level={2}>Global Crypto Stats</Title>
+				<Divider />
 				<Row justify="center" align="middle">
 					<Alert
 						message="something wrong with network"
@@ -39,6 +41,7 @@ export const Homepage = () => {
 	return (
 		<>
 			<Title level={2}>Global Crypto Stats</Title>
+			<Divider />
 			<Row>
 				<Col span={12}>
 					<Statistic title="Total Cryptocurrencies:" value={total} />
