@@ -1,7 +1,8 @@
 // import axios, { AxiosError } from 'axios';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ICryptoInfo } from '../models/ICoin';
-
+import { IHistory } from '../models/IHistory';
+import { ICoins } from '../models/ICoins';
 const cryptoApiHeaders = {
 	'x-rapidapi-host': process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,
 	'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
@@ -18,8 +19,11 @@ export const cryptoApi = createApi({
 		}),
 		getCryptoInfo: builder.query<ICryptoInfo, string>({
 			query: (coinId) => createRequest(`/coin/${coinId}`)
+		}),
+		getCryptoHistory: builder.query<IHistory, any>({
+			query: ({ coinId, timeperiod }) => createRequest(`coin/${coinId}/history/${timeperiod}`)
 		})
 	})
 });
 
-export const { useGetCryptosQuery, useGetCryptoInfoQuery } = cryptoApi;
+export const { useGetCryptosQuery, useGetCryptoInfoQuery, useGetCryptoHistoryQuery } = cryptoApi;

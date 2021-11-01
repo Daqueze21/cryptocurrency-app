@@ -46,30 +46,6 @@ export interface ICryptoInfoData {
 	base: IBase;
 	coin: ICoin;
 }
-
-// export interface IGlobalStats {
-// 	total: number;
-// 	totalMarkets: number;
-// 	totalExchanges: number;
-// 	totalMarketCap: number;
-// 	total24hVolume: number;
-// 	offset: number;
-// 	limit: number;
-// 	order: string;
-// 	base: string;
-// }
-
-// export interface ICoinsData {
-// 	stats: IGlobalStats;
-// 	base: IBase;
-// 	coins: ICoin[];
-// }
-
-// export interface ICoins {
-// 	status: string;
-// 	data: ICoinsData;
-// }
-
 export interface ICryptoInfo {
 	status: string;
 	data: ICryptoInfoData;

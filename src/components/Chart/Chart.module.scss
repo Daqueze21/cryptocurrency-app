@@ -1,0 +1,21 @@
+.chart_header{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+
+    .price_wrapper{
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .price_change{
+        font-weight: 900;
+    }
+    .current_price{
+        margin-top: 0px;
+        font-weight: 900;
+    }
+}
+
+

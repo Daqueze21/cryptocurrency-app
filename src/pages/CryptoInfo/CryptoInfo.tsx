@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Row, Typography, Select, Spin, Alert, Divider } from 'antd';
+import { Col, Row, Typography, Select, Divider } from 'antd';
 import {
 	TransactionOutlined,
 	DollarCircleOutlined,
@@ -16,10 +16,11 @@ import {
 	MoneyCollectOutlined,
 	PayCircleOutlined
 } from '@ant-design/icons';
-import { useGetCryptoInfoQuery } from '../../services/cryptoApi';
+import { useGetCryptoHistoryQuery, useGetCryptoInfoQuery } from '../../services/cryptoApi';
 import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
 import styles from './CryptoInfo.module.scss';
+import { Chart } from '../../components/Chart/Chart';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -30,12 +31,15 @@ type CoinParams = {
 
 export const CryptoInfo = () => {
 	const { coinId } = useParams<CoinParams>();
+	const [timeperiod, setTimeperiod] = useState('7d');
 	const { data, error, isLoading } = useGetCryptoInfoQuery(coinId);
+	const { data: cryptoHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
 
 	const cryptoInfo = data?.data?.coin;
+	const cryptoHistoryData = cryptoHistory?.data;
 	console.log('data', cryptoInfo);
 	if (isLoading) return <Loader />;
-	if (data) {
+	if (data && cryptoHistory) {
 		const {
 			rank,
 			name,
@@ -53,7 +57,9 @@ export const CryptoInfo = () => {
 			circulatingSupply,
 			iconUrl
 		} = data.data.coin;
-
+		console.log('history', cryptoHistoryData);
+		const { history, change } = cryptoHistory?.data;
+		const time = ['24h', '7d', '30d', '1y', '5y'];
 		const stats = [
 			{
 				title: 'Price to USD',
@@ -118,6 +124,25 @@ export const CryptoInfo = () => {
 					</Col>
 				</Row>
 
+				<Divider />
+				<Select
+					defaultValue="7d"
+					className={styles.select_timeperiod}
+					placeholder="Select Timeperiod"
+					onChange={(value) => setTimeperiod(value)}
+				>
+					{time.map((date) => (
+						<Option key={date} value={date}>
+							{date}
+						</Option>
+					))}
+				</Select>
+				<Chart
+					cryptoHistory={history}
+					change={change}
+					currentPrice={millify(+price)}
+					cryptoName={name}
+				/>
 				<Divider />
 
 				<Col className={styles.cryptoInfo_stats_wrapper}>
