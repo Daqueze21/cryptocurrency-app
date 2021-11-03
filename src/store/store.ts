@@ -4,10 +4,12 @@ import { combineReducers, configureStore, Action } from '@reduxjs/toolkit';
 
 import searchReducer from './reducers/Crypto_Slice';
 import { cryptoApi } from '../services/cryptoApi';
+import { newsApi } from '../services/newsApi';
 
 const rootReducer = combineReducers({
 	searchReducer,
-	[cryptoApi.reducerPath]: cryptoApi.reducer
+	[cryptoApi.reducerPath]: cryptoApi.reducer,
+	[newsApi.reducerPath]: newsApi.reducer
 });
 
 export const setupStore = () => {

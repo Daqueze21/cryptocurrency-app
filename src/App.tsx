@@ -21,7 +21,7 @@ const App = () => {
 							<Homepage />
 						</Route>
 						<Route exact path="/news">
-							<News />
+							<News simplified={false} />
 						</Route>
 						<Route exact path="/exchanges">
 							<Exchanges />

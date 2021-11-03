@@ -17,10 +17,10 @@ import {
 	PayCircleOutlined
 } from '@ant-design/icons';
 import { useGetCryptoHistoryQuery, useGetCryptoInfoQuery } from '../../services/cryptoApi';
+import { Chart } from '../../components/Chart/Chart';
 import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
 import styles from './CryptoInfo.module.scss';
-import { Chart } from '../../components/Chart/Chart';
 
 const { Title, Text } = Typography;
 const { Option } = Select;

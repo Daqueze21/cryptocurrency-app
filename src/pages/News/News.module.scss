@@ -1,0 +1,68 @@
+.news_select {
+  width: 200px;
+}
+
+.news_card {
+  min-height: 300px;
+
+  .news_image_container {
+    display: flex;
+    justify-content: space-between;
+
+    & img {
+      height: 120px;
+    }
+
+    .news_title {
+      width: 70%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  .news_description {
+    color: black;
+    margin: 10px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .provider_container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+    .provider_name{
+      margin-left: 10px;
+    }
+  }
+  
+}
+
+@media screen and (max-width:1000px){
+    .cryptoInfo_stats_wrapper{
+        flex-direction: column;
+
+        & h2{
+            margin-top: 0px;
+        }
+    }
+    
+    .crypto_desc_link{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .cryptoInfo_wrapper{
+        margin: 0;
+
+    }
+}
