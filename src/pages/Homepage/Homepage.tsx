@@ -1,9 +1,12 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import millify from 'millify';
 
 import { Typography, Row, Col, Statistic, Spin, Alert, Divider } from 'antd';
 import { useGetCryptosQuery } from '../../services/cryptoApi';
+import styles from './Homepage.module.scss';
+import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
+import News from '../News/News';
 
 const { Title } = Typography;
 
@@ -59,6 +62,33 @@ export const Homepage = () => {
 					<Statistic title="Total Markets" value={millify(totalMarkets)} />
 				</Col>
 			</Row>
+
+			<Divider />
+
+			<div className={styles.home_section_wrapper}>
+				<Title level={2} className={styles.home_section_title}>
+					Latest News
+				</Title>
+				<Title level={3} className={styles.home_section_more}>
+					<Link to="/news">Show more</Link>
+				</Title>
+			</div>
+
+			<News simplified />
+
+			<Divider />
+
+			<div className={styles.home_section_wrapper}>
+				<Title level={2} className={styles.home_section_title}>
+					Top 10 Cryptos
+				</Title>
+				<Title level={3} className={styles.home_section_more}>
+					<Link to="/cryptocurrencies">Show more</Link>
+				</Title>
+			</div>
+
+			<Cryptocurrencies simplified />
+
 			<Divider />
 		</>
 	);

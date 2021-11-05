@@ -1,67 +1,25 @@
-// .Navbar {
-//   flex: 0.2;
-//   background-color: rgb(0, 21, 41);
-//   // cursor: pointer;
-
-//   &_wrapper{
-//     position: fixed;
-//     left: 0;
-//     margin: 10px;
-//     height: 100vh;
-//     margin: 0px;
-//     background-color: rgb(0, 21, 41);
-    
-    .logo_wrapper{
-      // background-color: #41f379;
+    .logo_wrapper {
       display: flex;
       padding: 20px 7px;
       align-items: center;
       width: 100%;
-      
-      // span{
-      //   img {
-      //     width: 64px;
-      //   }
-      // }
 
       h3 {
-        margin:0 0 0 12px;
-        display:flex;
+        margin: 0 0 0 12px;
+        display: flex;
 
-        a{
+        a {
           color: white;
         }
-        a:hover{
+
+        a:hover {
           color: white;
         }
       }
     }
 
-  //   .menu-control-container{
-  //     display: none !important;
-  //     position: absolute !important;
-  //     right: 10px !important;
-  //     top: 25px !important;
-  //     font-size: 1.2rem !important;
-  //     background-color: var(--bgSecondary) !important;
-  //     border: none !important;
-  // }
-//   }
-  
-// }
-// .logo-container{
-    
-// }
-// .logo{
-    
-// }
-
-// .menu-control-container{
-//     display: none !important;
-//     position: absolute !important;
-//     right: 10px !important;
-//     top: 25px !important;
-//     font-size: 1.2rem !important;
-//     background-color: var(--bgSecondary) !important;
-//     border: none !important;
-// }
+@media screen and (max-width: 800px){
+    .header {
+      display: flex;
+    }
+}

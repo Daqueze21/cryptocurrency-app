@@ -1,0 +1,20 @@
+h2 {
+  margin: 10px 10px 10px;
+}
+
+.home_section_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px 10px;
+
+  .home_section_title {
+    font-size: 1.4rem;
+    margin-top: 0;
+  }
+
+  .home_section_more {
+    font-size: 1.3rem;
+    margin-top: 0;
+  }
+}
