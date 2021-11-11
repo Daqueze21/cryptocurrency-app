@@ -2,7 +2,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ICryptoInfo } from '../models/ICoin';
 import { IHistory } from '../models/IHistory';
-import { ICoins } from '../models/ICoins';
+// import { ICoins } from '../models/ICoins';
 import { IExchanges } from '../models/IExchanges';
 
 // const cryptoApiHeaders = {
