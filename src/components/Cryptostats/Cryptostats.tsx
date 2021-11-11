@@ -12,7 +12,6 @@ interface CryprostatsProps {
 }
 
 export const Cryptostats: FC<CryprostatsProps> = ({ icon, title, value }) => {
-
 	return (
 		<Col className={styles.crypto_stats}>
 			<Col className={styles.crypto_stats_name}>

@@ -18,6 +18,8 @@ export const Exchanges = () => {
 
 	if (isLoading) return <Loader />;
 	if (data) {
+		console.log(data);
+
 		const { exchanges } = data.data;
 		return (
 			<>
