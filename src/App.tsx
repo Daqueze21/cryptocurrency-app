@@ -6,7 +6,6 @@ import { Layout } from 'antd';
 import { Navbar } from './components';
 import { Homepage, News, Exchanges, Cryptocurrencies, CryptoInfo } from './pages';
 import 'antd/dist/antd.css';
-import styles from './App.module.scss';
 
 const { Footer, Content } = Layout;
 const App = () => {

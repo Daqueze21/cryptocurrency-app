@@ -2,42 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import millify from 'millify';
 
-import { Typography, Row, Col, Statistic, Spin, Alert, Divider } from 'antd';
+import { Typography, Row, Col, Statistic, Divider } from 'antd';
 import { useGetCryptosQuery } from '../../services/cryptoApi';
 import styles from './Homepage.module.scss';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
 import News from '../News/News';
+import Loader from '../../components/Loader/Loader';
+import Error from '../../components/Error/Error';
 
 const { Title } = Typography;
 
 export const Homepage = () => {
 	// const { status } = useAppSelector((state: RootState) => state.searchReducer);
 	const { data, error, isLoading } = useGetCryptosQuery('10');
-	if (isLoading)
-		return (
-			<>
-				<Title level={2}>Global Crypto Stats</Title>
-				<Divider />
-				<Row justify="center" align="middle">
-					<Spin tip="Loading..."></Spin>
-				</Row>
-			</>
-		);
+	if (isLoading) return <Loader />;
 
-	if (error)
-		return (
-			<>
-				<Title level={2}>Global Crypto Stats</Title>
-				<Divider />
-				<Row justify="center" align="middle">
-					<Alert
-						message="something wrong with network"
-						description="Further details about the context of this alert."
-						type="info"
-					/>
-				</Row>
-			</>
-		);
+	if (error) {
+		return <Error />;
+	}
 
 	const { total, total24hVolume, totalExchanges, totalMarketCap, totalMarkets } = data?.data?.stats;
 

@@ -20,9 +20,10 @@ import { useGetCryptoHistoryQuery, useGetCryptoInfoQuery } from '../../services/
 import { Chart } from '../../components/Chart/Chart';
 import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
-import styles from './CryptoInfo.module.scss';
 
-const { Title, Text } = Typography;
+import styles from './CryptoInfo.module.scss';
+import { Cryptostats } from '../../components/Cryptostats/Cryptostats';
+const { Title } = Typography;
 const { Option } = Select;
 
 type CoinParams = {
@@ -32,12 +33,11 @@ type CoinParams = {
 export const CryptoInfo = () => {
 	const { coinId } = useParams<CoinParams>();
 	const [timeperiod, setTimeperiod] = useState('7d');
-	const { data, error, isLoading } = useGetCryptoInfoQuery(coinId);
+	const { data, isLoading } = useGetCryptoInfoQuery(coinId);
 	const { data: cryptoHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
 
-	const cryptoInfo = data?.data?.coin;
 	const cryptoHistoryData = cryptoHistory?.data;
-	console.log('data', cryptoInfo);
+
 	if (isLoading) return <Loader />;
 	if (data && cryptoHistory) {
 		const {
@@ -157,13 +157,7 @@ export const CryptoInfo = () => {
 							</p>
 						</Col>
 						{stats.map(({ icon, title, value }) => (
-							<Col className={styles.crypto_stats}>
-								<Col className={styles.crypto_stats_name}>
-									<Text>{icon}</Text>
-									<Text>{title}</Text>
-								</Col>
-								<Text className={styles.crypto_stats_value}>{value}</Text>
-							</Col>
+							<Cryptostats icon={icon} title={title} value={value} />
 						))}
 					</Col>
 
@@ -178,13 +172,7 @@ export const CryptoInfo = () => {
 							</p>
 						</Col>
 						{otherStats.map(({ icon, title, value }) => (
-							<Col className={styles.crypto_stats}>
-								<Col className={styles.crypto_stats_name}>
-									<Text>{icon}</Text>
-									<Text>{title}</Text>
-								</Col>
-								<Text className={styles.crypto_stats_value}>{value}</Text>
-							</Col>
+							<Cryptostats icon={icon} title={title} value={value} />
 						))}
 					</Col>
 				</Col>

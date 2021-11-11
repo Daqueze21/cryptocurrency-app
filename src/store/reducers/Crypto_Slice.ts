@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 // import axios, { AxiosError } from 'axios';
 // import { AppThunk } from '../index';
 
